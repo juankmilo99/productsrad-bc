@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using productsrad_bc.Models;
 using Dapper;
+using Npgsql;
 
 
 namespace productsrad_bc.Repositories{
@@ -18,7 +19,8 @@ namespace productsrad_bc.Repositories{
 
         private IDbConnection CrearConexion()
         {
-            return new Npgsql.NpgsqlConnection(_config.GetConnectionString("DefaultConnection"));
+            var connectionString = _config.GetConnectionString("DefaultConnection");
+            return new NpgsqlConnection(connectionString);
         }
 
         public async Task<Usuario?> ObtenerPorUsernameAsync(string username)

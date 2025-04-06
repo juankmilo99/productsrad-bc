@@ -8,15 +8,18 @@ namespace productsrad_bc.Repositories;
 public class ProductoRepository : IProductoRepository
 {
     private readonly IConfiguration _config;
-    private readonly string _connectionString;
+    
 
     public ProductoRepository(IConfiguration config)
     {
-        _config = config;
-        _connectionString = _config.GetConnectionString("DefaultConnection")!;
+        _config = config;        
     }
 
-    private IDbConnection CrearConexion() => new NpgsqlConnection(_connectionString);
+    private IDbConnection CrearConexion()
+    {
+        var connectionString = _config.GetConnectionString("DefaultConnection");
+        return new NpgsqlConnection(connectionString);
+    }
 
     public async Task<IEnumerable<Producto>> ObtenerTodosAsync()
     {
