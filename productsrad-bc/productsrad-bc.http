@@ -1,0 +1,6 @@
+@productsrad_bc_HostAddress = http://localhost:5173
+
+GET {{productsrad_bc_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
