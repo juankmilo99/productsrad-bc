@@ -41,6 +41,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
+
 builder.Services.AddSingleton<JwtService>();
 
 builder.Services.AddAuthentication(options =>
