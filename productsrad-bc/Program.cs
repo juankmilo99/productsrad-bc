@@ -12,7 +12,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularLocalhost", policy =>
     {
-        policy.WithOrigins("http://localhost:4200", "https://tu-frontend-en-produccion.com") // tu frontend local
+        policy.WithOrigins("http://localhost:4200", "https://manageprod.netlify.app") 
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
