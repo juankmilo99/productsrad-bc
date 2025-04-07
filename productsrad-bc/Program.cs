@@ -7,6 +7,17 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Agregar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularLocalhost", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200", "https://tu-frontend-en-produccion.com") // tu frontend local
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -74,6 +85,8 @@ if (app.Environment.IsDevelopment() || true)
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
     });
 }
+
+app.UseCors("AllowAngularLocalhost");
 
 app.UseHttpsRedirection();
 
